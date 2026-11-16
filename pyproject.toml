@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools==84.2.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mathist-gmail-connector"
+version = "0.0.0.dev1"
+description = "Read-only access through a caller-authorized Gmail service"
+requires-python = ">=3.11"
+license = "PolyForm-Small-Business-1.0.0"
+license-files = ["LICENSE.md", "NOTICE"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
