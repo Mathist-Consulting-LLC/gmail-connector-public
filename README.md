@@ -1,6 +1,22 @@
 # Gmail Connector
 
-Read-only Gmail profile, message search, and retrieval through a caller-authorized service.
+Let a Python application search an authorized Gmail account and retrieve messages for its own workflow. This small, read-only connector provides account profile lookup, message search, and full-message retrieval through a Gmail service supplied by your application.
+
+You could use it to find invoice emails, retrieve support messages, or locate reservation receipts. The connector returns Gmail responses so your application can decide how to interpret and store the results.
+
+## Why use it?
+
+Gmail's website lets a person search and read mail. The Gmail API lets software do that work. This connector provides a small common interface around three API operations, with explicit account selection and request-level retries disabled.
+
+It is useful when you want application logic to depend on a narrow mailbox interface that can also be supplied by a fake service during testing. Account handles are bound to their supplied services, and an unknown account produces an authentication error. Your application can use multiple accounts by supplying separate authorized services.
+
+## How it fits into an application
+
+Your application creates the Gmail service, obtains the user's permission, and handles credential storage, refresh, deadlines, and resource limits. It passes the connector an account-to-service mapping.
+
+For an invoice workflow, the application can check the account profile, search using its invoice query, follow returned page tokens, retrieve selected messages, and interpret their contents. The connector accepts the query and returns provider data. The [synthetic invoice test](tests/test_connector.py) shows this sequence without accessing a real mailbox.
+
+The connector exposes read operations only. Gmail access is limited by the permissions on the service your application supplies. The package has no booking-specific dependency.
 
 ## Install from source
 
