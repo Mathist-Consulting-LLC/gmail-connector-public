@@ -1,0 +1,15 @@
+{
+  "publication_note": "Sanitized source-backed projection. Historical IDs/revisions/criteria are retained; original source pointers, approvals and unredacted catalogs are protected. Historical acceptance is not a claim that all criteria are currently proven. New documentation records cite public issues plus separately retained implementation authorization.",
+  "records": [
+    {
+      "id": "EMAIL-ORGANIZATION",
+      "revision": 1,
+      "authorization_note": "Issue defines scope; implementation separately authorized by maintainer. Original instruction retained in protected task evidence."
+    },
+    {
+      "id": "EMAIL-DEVELOPER-DOCS",
+      "revision": 1,
+      "authorization_note": "Issue defines scope; implementation separately authorized by maintainer. Original instruction retained in protected task evidence."
+    }
+  ]
+}

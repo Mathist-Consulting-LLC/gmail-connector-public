@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "requirements": [
+    {
+      "id": "EMAIL-ORGANIZATION",
+      "revision": 1,
+      "statement": "Organize Email Tools around the existing component while preserving package identities, imports, behavior, licenses and independent use. Publish self-contained component ownership and source-backed requirements. Coordinate repository mapping without adding providers or application features.",
+      "kind": "mandatory",
+      "lifecycle": "accepted",
+      "source": {
+        "pointer": "https://github.com/Mathist-Consulting-LLC/gmail-connector-public/issues/4",
+        "authority": "explicit-user",
+        "date": "2026-11-18"
+      },
+      "owner": "gmail-connector-public",
+      "scope": "repository",
+      "applicability": [
+        "documentation",
+        "organization"
+      ],
+      "dependencies": [],
+      "supersedes": [],
+      "acceptance": [
+        {
+          "id": "AC1",
+          "statement": "Explain repository purpose, component map, retained layout, expansion boundaries and relocation impact using current repository names."
+        },
+        {
+          "id": "AC2",
+          "statement": "Retain historical requirement IDs, revisions and acceptance semantics, with public-safe provenance and protected original baselines and approvals."
+        },
+        {
+          "id": "AC3",
+          "statement": "Supply public agent guidance and component ownership; preserve runtime code and existing safety tests; verify fresh installed consumers."
+        }
+      ],
+      "rationale": "Explicitly authorized documentation and organization of existing functionality.",
+      "failure_example": "A consumer needs private context or assumes an unavailable capability is implemented.",
+      "assertions": [],
+      "changes": [],
+      "plain_language": "Email Tools contains the component that works today; its package names stay stable.",
+      "positive_example": "A new caller installs the existing package and finds its component charter without private documentation."
+    },
+    {
+      "id": "EMAIL-DEVELOPER-DOCS",
+      "revision": 1,
+      "statement": "Provide complete public developer documentation of existing behavior, including installation, API contracts, caller configuration, authorization, transports, pagination, failures, recovery, lifecycle, extension and validation. Keep private data out; distribute through GitHub source/local builds only.",
+      "kind": "mandatory",
+      "lifecycle": "accepted",
+      "source": {
+        "pointer": "https://github.com/Mathist-Consulting-LLC/gmail-connector-public/issues/3",
+        "authority": "explicit-user",
+        "date": "2026-11-18"
+      },
+      "owner": "gmail-connector-public",
+      "scope": "repository",
+      "applicability": [
+        "documentation",
+        "organization"
+      ],
+      "dependencies": [],
+      "supersedes": [],
+      "acceptance": [
+        {
+          "id": "AC1",
+          "statement": "Provide a linked docs index and reading order, minimal and realistic runnable examples, exact offline expected output and supported runtime/language differences."
+        },
+        {
+          "id": "AC2",
+          "statement": "Verify documented signatures, imports, parameters, returns, error codes, limits and recovery against current source; document caller-owned live prerequisites without live writes or mail access."
+        },
+        {
+          "id": "AC3",
+          "statement": "Follow the public setup from a fresh checkout into a separate installed consumer; record validation and distinguish synthetic results from unobserved live behavior."
+        },
+        {
+          "id": "AC4",
+          "statement": "Document component-specific operations and extension boundaries required by the linked public documentation issue; preserve all accepted safety cases."
+        }
+      ],
+      "rationale": "Explicitly authorized documentation and organization of existing functionality.",
+      "failure_example": "A consumer needs private context or assumes an unavailable capability is implemented.",
+      "assertions": [],
+      "changes": [],
+      "plain_language": "A developer can install the library and integrate it using public instructions and credential-free examples.",
+      "positive_example": "A separate consumer installs a locally built artifact, runs an offline success and failure path, and understands which responsibilities remain with the caller."
+    }
+  ]
+}

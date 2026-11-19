@@ -1,4 +1,8 @@
-# Gmail Connector
+# Email Tools
+
+The existing Gmail connector is the current component. It lets your own application read through a Gmail service you supply; it creates no credentials or network client.
+
+Start with the [developer guide](docs/README.md) for installation, runnable offline examples and API contracts. See the [component map](docs/component-charter.md) and [requirements](requirements/README.md).
 
 Let a Python application search an authorized Gmail account and retrieve messages for its own workflow. This small, read-only connector provides account profile lookup, message search, and full-message retrieval through a Gmail service supplied by your application.
 
@@ -27,3 +31,14 @@ Import `GmailServiceConnector` from `mathist_gmail_connector` and pass a mapping
 ## License
 
 [PolyForm Small Business 1.0.0](LICENSE.md). Preserve the [required notice](NOTICE) when redistributing.
+
+A script could search invoices, retrieve selected messages and interpret them
+using its own business rules. The connector selects an explicitly named account
+and passes read requests to an already authorized Gmail service. Your application
+owns permissions, credentials, privacy, message interpretation and recovery.
+
+It supports Python 3.11 or newer. Install from a local GitHub checkout with
+`python -m pip install .`. The [quickstart](docs/quickstart.md) builds a wheel
+and runs a standalone example without Gmail access.
+
+[PolyForm Small Business 1.0.0](LICENSE.md). Preserve the [required notice](NOTICE).
