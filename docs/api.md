@@ -36,3 +36,8 @@ is categorized here. SDK/service/transport exceptions propagate unchanged and
 may contain sensitive data; this component does not sanitize them. Never display
 or log raw exceptions or return bodies. A wrapper can translate failures into
 fixed safe categories for its own application. No retry loop is implemented.
+
+These operations implement GMAIL-BINDING, GMAIL-READS and GMAIL-ERRORS in the
+[owning catalog](../requirements/catalog.json); caller boundaries are indexed in
+the [charter](component-charter.md). See the [test trace](validation.md#runtime-requirement-trace)
+for what existing tests actually cover.

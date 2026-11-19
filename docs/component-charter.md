@@ -30,3 +30,8 @@ Read [API](api.md), [setup and transport](setup.md), [recovery](recovery.md) and
 [validation](validation.md). Acceptance and authorization are separate from
 capability detection. Review changes against the original accepted baseline and
 actual final diff; preserve all negative tests and state evidence limits.
+
+Owning runtime IDs: GMAIL-BINDING, GMAIL-READS, GMAIL-ERRORS,
+GMAIL-CALLER-OWNERSHIP and GMAIL-INDEPENDENT-PACKAGE. Read their authoritative
+[records and provenance index](../requirements/README.md) and
+[source-backed test trace](validation.md#runtime-requirement-trace).

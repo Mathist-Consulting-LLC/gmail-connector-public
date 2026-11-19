@@ -84,6 +84,195 @@
       "changes": [],
       "plain_language": "A developer can install the library and integrate it using public instructions and credential-free examples.",
       "positive_example": "A separate consumer installs a locally built artifact, runs an offline success and failure path, and understands which responsibilities remain with the caller."
+    },
+    {
+      "id": "GMAIL-BINDING",
+      "revision": 1,
+      "statement": "Bind each caller-supplied opaque account handle to one already authorized Gmail service. Fail for an unbound handle without fallback.",
+      "kind": "mandatory",
+      "lifecycle": "accepted",
+      "source": {
+        "pointer": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+        "authority": "explicit-user",
+        "date": "2026-11-16"
+      },
+      "owner": "gmail-connector-public",
+      "scope": "repository",
+      "applicability": [
+        "gmail",
+        "documentation",
+        "organization"
+      ],
+      "dependencies": [],
+      "supersedes": [],
+      "acceptance": [
+        {
+          "id": "AC1",
+          "statement": "Profile lookup using an unbound handle raises connector-owned authentication_required before accessing any service; no default or alternate account is used."
+        },
+        {
+          "id": "AC2",
+          "statement": "A bound opaque handle selects its supplied service for the read operations."
+        }
+      ],
+      "rationale": "First durable owning capture of existing authorized extraction/release contract. Source and tests corroborate implementation; they are not user authority. No behavior or historical catalog is invented.",
+      "failure_example": "A caller cannot use the connector independently or an unknown account silently reads another service.",
+      "assertions": [],
+      "changes": [],
+      "plain_language": "The caller names the account explicitly; a missing binding cannot read another account.",
+      "positive_example": "A caller binds billing to its authorized service; profile(account=\"missing\") fails before service access."
+    },
+    {
+      "id": "GMAIL-READS",
+      "revision": 1,
+      "statement": "Expose read-only profile lookup, caller-supplied message search with pagination, and full-message retrieval by ID. Preserve the existing read-only request shape and zero SDK retry setting.",
+      "kind": "mandatory",
+      "lifecycle": "accepted",
+      "source": {
+        "pointer": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+        "authority": "explicit-user",
+        "date": "2026-11-16"
+      },
+      "owner": "gmail-connector-public",
+      "scope": "repository",
+      "applicability": [
+        "gmail",
+        "documentation",
+        "organization"
+      ],
+      "dependencies": [],
+      "supersedes": [],
+      "acceptance": [
+        {
+          "id": "AC1",
+          "statement": "Profile uses getProfile(userId=\"me\"); search forwards caller query, page token and maximum results to messages.list(userId=\"me\", q=..., pageToken=..., maxResults=...)."
+        },
+        {
+          "id": "AC2",
+          "statement": "Message retrieval uses messages.get(userId=\"me\", id=caller_message_id, format=\"full\"); each profile/list/get request executes with num_retries=0."
+        },
+        {
+          "id": "AC3",
+          "statement": "Return the provider response dictionaries without application interpretation; the caller selects further pages and messages. No send, modify or delete operation is exposed."
+        }
+      ],
+      "rationale": "First durable owning capture of existing authorized extraction/release contract. Source and tests corroborate implementation; they are not user authority. No behavior or historical catalog is invented.",
+      "failure_example": "A caller cannot use the connector independently or an unknown account silently reads another service.",
+      "assertions": [],
+      "changes": [],
+      "plain_language": "The connector forwards three kinds of read request, and the caller chooses searches and pages.",
+      "positive_example": "An invoice consumer supplies subject:invoice and a next-page token, then fetches a selected full message by ID."
+    },
+    {
+      "id": "GMAIL-ERRORS",
+      "revision": 1,
+      "statement": "Define connector-owned errors. Keep Room Booking error translation at its compatibility boundary.",
+      "kind": "mandatory",
+      "lifecycle": "accepted",
+      "source": {
+        "pointer": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+        "authority": "explicit-user",
+        "date": "2026-11-16"
+      },
+      "owner": "gmail-connector-public",
+      "scope": "repository",
+      "applicability": [
+        "gmail",
+        "documentation",
+        "organization"
+      ],
+      "dependencies": [],
+      "supersedes": [],
+      "acceptance": [
+        {
+          "id": "AC1",
+          "statement": "Export ConnectorFailure with a code; an unresolved account binding has authentication_required."
+        },
+        {
+          "id": "AC2",
+          "statement": "Room Booking translates applicable connector errors through its optional compatibility boundary; booking errors and interpretation are not dependencies of the standalone connector."
+        }
+      ],
+      "rationale": "First durable owning capture of existing authorized extraction/release contract. Source and tests corroborate implementation; they are not user authority. No behavior or historical catalog is invented.",
+      "failure_example": "A caller cannot use the connector independently or an unknown account silently reads another service.",
+      "assertions": [],
+      "changes": [],
+      "plain_language": "Generic account selection errors belong here; a booking caller translates them for its own domain.",
+      "positive_example": "An unrelated consumer catches ConnectorFailure.code; a booking consumer receives its booking-specific translated error."
+    },
+    {
+      "id": "GMAIL-CALLER-OWNERSHIP",
+      "revision": 1,
+      "statement": "The caller supplies an authorized Gmail service and owns credentials, refresh, queries, message interpretation, scheduling, delivery and application policy. Booking-specific recipient matching, receipt verification and reservation status remain in Room Booking.",
+      "kind": "mandatory",
+      "lifecycle": "accepted",
+      "source": {
+        "pointer": "protected-original:sha256:29aca10754b95dbb06ceb6abb613eba761b1fd6c66d2ffb1499a664ee9a94f3d",
+        "authority": "explicit-user",
+        "date": "2026-11-16"
+      },
+      "owner": "gmail-connector-public",
+      "scope": "repository",
+      "applicability": [
+        "gmail",
+        "documentation",
+        "organization"
+      ],
+      "dependencies": [],
+      "supersedes": [],
+      "acceptance": [
+        {
+          "id": "AC1",
+          "statement": "The standalone connector creates no credentials, refresh owner, scheduler, delivery system or application policy; it uses the injected service and caller search inputs."
+        },
+        {
+          "id": "AC2",
+          "statement": "Exact tagged-recipient matching, receipt verification and reservation-state interpretation remain in Room Booking; standalone consumers can interpret unrelated synthetic mail."
+        }
+      ],
+      "rationale": "First durable owning capture of existing authorized extraction/release contract. Source and tests corroborate implementation; they are not user authority. No behavior or historical catalog is invented.",
+      "failure_example": "A caller cannot use the connector independently or an unknown account silently reads another service.",
+      "assertions": [],
+      "changes": [],
+      "plain_language": "Applications authorize and interpret mail; the connector only selects a service and reads.",
+      "positive_example": "An invoice workflow owns its credentials and invoice rules while Room Booking separately owns reservation evidence."
+    },
+    {
+      "id": "GMAIL-INDEPENDENT-PACKAGE",
+      "revision": 1,
+      "statement": "Provide an independently installable read-only Gmail connector with no Room Booking dependency. Room Booking adopts it optionally through a documented compatibility path.",
+      "kind": "mandatory",
+      "lifecycle": "accepted",
+      "source": {
+        "pointer": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+        "authority": "explicit-user",
+        "date": "2026-11-16"
+      },
+      "owner": "gmail-connector-public",
+      "scope": "repository",
+      "applicability": [
+        "gmail",
+        "documentation",
+        "organization"
+      ],
+      "dependencies": [],
+      "supersedes": [],
+      "acceptance": [
+        {
+          "id": "AC1",
+          "statement": "Build and install the standalone distribution into a clean consumer without Room Booking and exercise a synthetic non-booking search/fetch workflow."
+        },
+        {
+          "id": "AC2",
+          "statement": "Exercise installed Room Booking with email absent and separately with the optional standalone connector installed, preserving existing callers."
+        }
+      ],
+      "rationale": "First durable owning capture of existing authorized extraction/release contract. Source and tests corroborate implementation; they are not user authority. No behavior or historical catalog is invented.",
+      "failure_example": "A caller cannot use the connector independently or an unknown account silently reads another service.",
+      "assertions": [],
+      "changes": [],
+      "plain_language": "The Gmail component works by itself; booking callers may install it as an option.",
+      "positive_example": "A clean invoice consumer installs only the Gmail wheel; separate booking consumers validate the optional integration."
     }
   ]
 }

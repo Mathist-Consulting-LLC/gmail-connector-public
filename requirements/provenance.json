@@ -10,6 +10,84 @@
       "id": "EMAIL-DEVELOPER-DOCS",
       "revision": 1,
       "authorization_note": "Issue defines scope; implementation separately authorized by maintainer. Original instruction retained in protected task evidence."
+    },
+    {
+      "id": "GMAIL-BINDING",
+      "revision": 1,
+      "source_capture": "First owning runtime capture, not a restoration of a historical catalog. Accepted extraction/release source verified privately; source code/tests corroborate implementation only.",
+      "authorization_source": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+      "publication_routing": "https://github.com/Mathist-Consulting-LLC/gmail-connector-public/issues/4"
+    },
+    {
+      "id": "GMAIL-READS",
+      "revision": 1,
+      "source_capture": "First owning runtime capture, not a restoration of a historical catalog. Accepted extraction/release source verified privately; source code/tests corroborate implementation only.",
+      "authorization_source": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+      "publication_routing": "https://github.com/Mathist-Consulting-LLC/gmail-connector-public/issues/4"
+    },
+    {
+      "id": "GMAIL-ERRORS",
+      "revision": 1,
+      "source_capture": "First owning runtime capture, not a restoration of a historical catalog. Accepted extraction/release source verified privately; source code/tests corroborate implementation only.",
+      "authorization_source": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+      "publication_routing": "https://github.com/Mathist-Consulting-LLC/gmail-connector-public/issues/4"
+    },
+    {
+      "id": "GMAIL-CALLER-OWNERSHIP",
+      "revision": 1,
+      "source_capture": "First owning runtime capture, not a restoration of a historical catalog. Accepted extraction/release source verified privately; source code/tests corroborate implementation only.",
+      "authorization_source": "protected-original:sha256:29aca10754b95dbb06ceb6abb613eba761b1fd6c66d2ffb1499a664ee9a94f3d",
+      "publication_routing": "https://github.com/Mathist-Consulting-LLC/gmail-connector-public/issues/4"
+    },
+    {
+      "id": "GMAIL-INDEPENDENT-PACKAGE",
+      "revision": 1,
+      "source_capture": "First owning runtime capture, not a restoration of a historical catalog. Accepted extraction/release source verified privately; source code/tests corroborate implementation only.",
+      "authorization_source": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+      "publication_routing": "https://github.com/Mathist-Consulting-LLC/gmail-connector-public/issues/4"
     }
-  ]
+  ],
+  "protected_originals": [
+    {
+      "identifier": "protected-original:sha256:710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+      "visibility": "protected",
+      "kind": "authorized-source-snapshot",
+      "sha256": "710d9f7f2a902ab5a88505c6c69208f77999c836784797be2b8734e7c430f9fe",
+      "digest_format": "original-file-bytes",
+      "decision_date": "2026-11-16",
+      "bindings": [
+        {
+          "record": "GMAIL-BINDING",
+          "location": "source"
+        },
+        {
+          "record": "GMAIL-READS",
+          "location": "source"
+        },
+        {
+          "record": "GMAIL-ERRORS",
+          "location": "source"
+        },
+        {
+          "record": "GMAIL-INDEPENDENT-PACKAGE",
+          "location": "source"
+        }
+      ]
+    },
+    {
+      "identifier": "protected-original:sha256:29aca10754b95dbb06ceb6abb613eba761b1fd6c66d2ffb1499a664ee9a94f3d",
+      "visibility": "protected",
+      "kind": "authorized-source-snapshot",
+      "sha256": "29aca10754b95dbb06ceb6abb613eba761b1fd6c66d2ffb1499a664ee9a94f3d",
+      "digest_format": "original-file-bytes",
+      "decision_date": "2026-11-16",
+      "bindings": [
+        {
+          "record": "GMAIL-CALLER-OWNERSHIP",
+          "location": "source"
+        }
+      ]
+    }
+  ],
+  "digest_policy": "SHA256 of UTF-8 JSON with sorted keys, compact separators and ASCII escapes for original source/acceptance objects; catalog_sha256 hashes original file bytes. Identifiers resolve here to protected original bindings, not to publication issues. Maintainers retain exact originals privately."
 }
